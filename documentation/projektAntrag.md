@@ -49,3 +49,11 @@ Die Plattform dient als Bewertung von Leserinnen und Lesern zu Mangas.
 - **API-Routen:** GET und POST  
 - **Authentifizierung:** Teilnahme an Interaktionen erfordert Account, jedoch können Posts ohne Anmeldung angesehen werden.  
 - **Rollenmanagement:** Admin und User
+
+### Datenbank
+
+- User
+- Mangas -> Post -> Comments 
+- Top Post and Top Comments
+- Settings
+
