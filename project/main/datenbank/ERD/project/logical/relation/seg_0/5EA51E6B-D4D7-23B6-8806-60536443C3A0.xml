@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FavMangas" directorySegmentName="seg_0" id="5EA51E6B-D4D7-23B6-8806-60536443C3A0">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-07 13:06:44 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<engineerTo>
+<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>9A9D18AE-E8AC-8F20-4BD9-0FE8FD16CEB2</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E77A5086-5BDC-4A51-F970-1E90581E7A5A</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
