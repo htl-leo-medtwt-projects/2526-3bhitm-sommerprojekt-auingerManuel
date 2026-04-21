@@ -16,7 +16,7 @@ echo '<div class="manga-list">';
 foreach ($mangas as $manga) {
     echo '<div class="manga-item">';
     echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
-    echo '<img src="./Images/dummy.png" alt="' . $manga['name'] . '">';
+    echo '<img src="../../Images/dummy.png" alt="' . $manga['name'] . '">';
     echo '<h3>' . $manga['name'] . '</h3>';
     echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
     echo '</a>';
@@ -56,11 +56,11 @@ function printFavMangas($userId) {
     if (empty($favMangas)) {
         echo "<p>Du hast noch keine Favoriten hinzugefügt.</p>";
     } else {
-        echo '<div class="manga-list">';
+        echo '<div class="fav-manga-list">';
         foreach ($favMangas as $manga) {
             echo '<div class="manga-item">';
             echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
-            echo '<img src="./Images/dummy.png" alt="' . $manga['name'] . '">';
+            echo '<img src="../../Images/dummy.png" alt="' . $manga['name'] . '">';
             echo '<h3>' . $manga['name'] . '</h3>';
             echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
             echo '</a>';

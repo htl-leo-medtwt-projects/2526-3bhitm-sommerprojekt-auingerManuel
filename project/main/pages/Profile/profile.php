@@ -42,7 +42,7 @@ $countryData = getCountry($userId);
 
 
 
-
+  <main>
     <div id="profile-header">
         <div id="profile-picture">
             <img src="../../Images/dummy.png" alt="dummy">
@@ -55,13 +55,13 @@ $countryData = getCountry($userId);
 
     <div id="profil-fav">
        <div class="arrow-left"><img src="../../Images/arrow-left.png" alt="Left Arrow"></div>
-       <div id="fav-mangas">
+      
         <?php printFavMangas($userId); ?>
-       </div> 
+       
        <div class="arrow-right"><img src="../../Images/arrow-right.png" alt="Right Arrow"></div>
     </div>
 
-
+</main>
     
 <nav class="nav-bar" id="navBar">
  
