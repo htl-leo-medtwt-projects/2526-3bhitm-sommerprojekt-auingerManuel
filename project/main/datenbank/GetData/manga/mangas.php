@@ -14,13 +14,14 @@ $mangas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 echo '<div class="manga-list">';
 foreach ($mangas as $manga) {
+    echo '<div class="manga-item">';
     echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
     echo '<img src="./Images/dummy.png" alt="' . $manga['name'] . '">';
     echo '<h3>' . $manga['name'] . '</h3>';
     echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
     echo '</a>';
-    
-   
+    echo "<div onclick='addToFavorites(" . $manga['manga_id'] . ")' class='addfav'><p>Add to Favorites</p></div>";
+    echo '</div>';
 }
 echo '</div>';
 }

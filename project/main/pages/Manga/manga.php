@@ -5,7 +5,7 @@ require_once '../../datenbank/GetData/manga/mangas.php';
 require_once '../../datenbank/GetData/chapter/chapter.php';
 
 $manga = getManga($_GET['id']);
-$chapters = getChapter($_GET['id']);
+$chapters = getChapter($manga);
 
 
 
@@ -81,7 +81,7 @@ $chapters = getChapter($_GET['id']);
             <?php foreach ($chapters as $chapter): ?>
                 <div class="chapter-item">
                     <a href="./chapter.php?id=<?php echo $chapter['chapter_id']; ?>">
-                        <?php echo $chapter['chapter_id']; ?>
+                        <?php echo $chapter['name']; ?>
                     </a>
                 </div>
             <?php endforeach; ?>

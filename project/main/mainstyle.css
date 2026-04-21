@@ -55,6 +55,45 @@
   --transition: 0.25s ease;
 }
 
+/* ── Responsive breakpoints ── */
+@media (min-width: 768px) {
+  :root {
+    /* Tablet sizes */
+    --text-xs: 13px;
+    --text-sm: 14px;
+    --text-md: 15px;
+    --text-lg: 17px;
+    --text-xl: 20px;
+    --text-xxl: 24px;
+
+    --h1: 28px;
+    --h2: 22px;
+    --h3: 18px;
+
+    --space-4: 20px;
+    --space-5: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    /* Desktop sizes */
+    --text-xs: 14px;
+    --text-sm: 15px;
+    --text-md: 16px;
+    --text-lg: 18px;
+    --text-xl: 22px;
+    --text-xxl: 28px;
+
+    --h1: 32px;
+    --h2: 26px;
+    --h3: 20px;
+
+    --space-4: 24px;
+    --space-5: 28px;
+  }
+}
+
  * {
       box-sizing: border-box;
       margin: 0;
@@ -65,16 +104,34 @@
        background-color: var(--color-bg-main);
       
       min-height: 100vh;
-      font-family: sans-serif;
+      font-family: var(--font-body);
+      overflow-x: hidden;
     }
  
     /* ── Nav container ── */
     .nav-bar {
       display: flex;
       width: 100%;
-      max-width: 480px;
-      background: var( --color-bg-box);
+      max-width: 100%;
+      background: var(--color-bg-box);
       padding: 10px 0 14px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: fixed; bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      .nav-bar {
+        position: relative;
+        max-width: 100%;
+        bottom: auto;
+        border-top: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
     }
  
     /* ── Each tab box ── */
@@ -128,23 +185,35 @@
 /* ── Manga List ── */
 .manga-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-3);
   padding: var(--space-4);
-  max-width: 480px;
+  padding-bottom: 100px;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 25%;
+  margin-top: 0;
 }
+
+
 
 .manga-item {
   background: var(--color-bg-box);
-  padding: var(--space-4);
+  padding: var(--space-3);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow);
   transition: var(--transition);
   display: block;
   text-decoration: none;
   color: inherit;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .manga-item {
+    padding: var(--space-4);
+  }
 }
 
 .manga-item:hover {
@@ -170,4 +239,15 @@ img {
   height: auto;
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-3);
+}
+
+.addfav {
+    padding: 10px 20px;
+    background: var(--color-bg-main);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--text-md);
+    transition: var(--transition);
+    margin-top: var(--space-1);
 }

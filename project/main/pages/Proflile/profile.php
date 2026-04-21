@@ -1,29 +1,37 @@
 <?php
+session_start();
 
-require_once "./datenbank/mysqlConnection.php";
+require_once '../../datenbank/connection.php';
 
-require "./datenbank/GetData/manga/mangas.php";
+require_once '../../datenbank/GetData/user/getUserData.php';
 
-echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
+require_once '../../datenbank/GetData/country/country.php';
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../../index.php");
+    exit();
+} else {
+    $userId = $_SESSION['user_id'];
+}
+
+$userData = getUserData($userId);
+$countryData = getCountry($userId);
 
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
-    <link rel="stylesheet" href="./mainstyle.css">
-    <script src="./nav.js" defer></script>
+    <link rel="stylesheet" href="../../mainstyle.css">
+    <link rel="stylesheet" href="../../styles/profileStyle.css">
+    <script src="../../nav.js" defer></script>
 </head>
 <body>
 
-    <div id="signIn"> <a href="./pages/login/login.php"><p>Sign in</p></div>
-
-   <nav class="nav-bar" id="navBar">
+<nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
     <a href="#" class="nav-item" data-id="myinteraction">
@@ -58,7 +66,7 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     </a>
  
     <!-- Profil -->
-    <a href="./pages/Profile/profile.php" class="nav-item" data-id="profil">
+    <a href="./profile.php" class="nav-item" data-id="profil">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -70,9 +78,16 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
  
   </nav>
 
-  <?php
-getMangas();
-  ?>
-    
+
+    <div id="profile-header">
+        <div id="profile-picture">
+            <img src="../../Images/dummy.png" alt="dummy">
+        </div>
+        <div id="profile-info">
+            <h1><?php echo htmlspecialchars($userData['username']); ?></h1>
+            <p><?php echo htmlspecialchars($countryData['countryname']); ?></p>
+        </div>
+    </div>
+
 </body>
 </html>
