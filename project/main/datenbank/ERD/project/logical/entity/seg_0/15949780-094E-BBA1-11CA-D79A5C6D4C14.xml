@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="15949780-094E-BBA1-11CA-D79A5C6D4C14" name="Post">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-07 12:58:09 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<engineerTo>
+<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="create_at" id="BC52BAA5-91C4-50E2-BDE3-8141A3AEC067">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-07 12:58:20 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<engineerTo>
+<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<domain>3B4A01F7-AEB8-F4AD-A2F4-0FBB4F867394</domain>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Bloger" id="F7C05ADD-96D4-8EB6-E960-CF51B0942630">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-07 12:59:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<engineerTo>
+<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

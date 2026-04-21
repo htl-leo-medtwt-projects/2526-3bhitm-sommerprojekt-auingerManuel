@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8CDF8232-F978-5B68-8D2C-239AA957DC25" name="Post">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>15949780-094E-BBA1-11CA-D79A5C6D4C14</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="create_at" id="44A1CEFB-C44E-A72F-DCA7-35BDC1EB9804">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>BC52BAA5-91C4-50E2-BDE3-8141A3AEC067</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<domain>3B4A01F7-AEB8-F4AD-A2F4-0FBB4F867394</domain>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Bloger" id="9DE141B1-7338-3315-A7A3-7E197ABC7BF2">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>F7C05ADD-96D4-8EB6-E960-CF51B0942630</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="05D3DAC7-4D4C-B1AF-63BC-981F02DD8679" name="Post_Chapter_FK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>1E366946-3EA6-D3E1-260F-61884B134D34</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+</Table>

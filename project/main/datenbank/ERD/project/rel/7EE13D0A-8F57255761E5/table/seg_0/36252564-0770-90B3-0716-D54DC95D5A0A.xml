@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="36252564-0770-90B3-0716-D54DC95D5A0A" name="User">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>E77A5086-5BDC-4A51-F970-1E90581E7A5A</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Firstname" id="F5265F5B-4569-EF4E-0146-D1FCC46E4AD8">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>BA648E24-FD4B-798E-C978-A898E62EA245</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Lastname" id="951F44B7-DA5B-0F6E-9C4F-F32C544E5831">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>08BC692A-8DCB-7F31-2FF0-78B078D38658</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="C47E2F41-E829-D9DC-2174-F6AD0CA0A96B">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>007A4117-D617-9683-FD7E-8E0BC613215B</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="created_at" id="72C11E77-E6DB-11E7-768B-AFCC2D2C4D83">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>C038BCA7-C66B-4B7D-BE0E-C7BA3EA2956A</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<domain>3B4A01F7-AEB8-F4AD-A2F4-0FBB4F867394</domain>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_ID" id="F77BEB36-9A2C-8C98-4CE0-35C100E25724">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+<Column name="Country_Country_ID" id="51B84F89-BB77-1049-F5AB-78EDD8F49161">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E817252F-B73A-E799-E1BB-83BF9D64E0F0" referredColumn="0792BD84-0C1A-5D4C-80FC-F3C722AED5C7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BF9ADDC1-5193-BAB3-CBA4-4892ED485829" name="User_PK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="F77BEB36-9A2C-8C98-4CE0-35C100E25724"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="32DE062B-1657-C089-DBD5-88DA96E3E4CA" name="User_Country_FK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>CD90A3C6-E8E0-51D0-DDD6-2E88B8A0C591</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="51B84F89-BB77-1049-F5AB-78EDD8F49161"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

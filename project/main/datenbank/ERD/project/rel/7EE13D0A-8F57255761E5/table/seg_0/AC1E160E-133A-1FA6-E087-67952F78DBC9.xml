@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AC1E160E-133A-1FA6-E087-67952F78DBC9" name="Country">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>269C92AC-7CA0-60D2-D0D1-C2BED0A8AF49</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CountryName" id="0C9A65CF-4A73-5CB0-4F79-7E16A2B39EB7">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>474654B5-B158-7A37-7A78-E9244FFD6D97</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="shortcut" id="FD74CE2C-5540-F37E-A6F9-1169FBB9C9CF">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>8EA260E6-BC37-1816-0474-650FCFDC403B</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Country_ID" id="0792BD84-0C1A-5D4C-80FC-F3C722AED5C7">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AA5E6131-A8A9-B444-44D9-666E14BA3693" name="Country_PK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="0792BD84-0C1A-5D4C-80FC-F3C722AED5C7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

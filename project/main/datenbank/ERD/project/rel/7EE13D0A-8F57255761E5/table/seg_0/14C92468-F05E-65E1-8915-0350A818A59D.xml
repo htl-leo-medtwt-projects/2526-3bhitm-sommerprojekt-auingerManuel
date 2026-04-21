@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="14C92468-F05E-65E1-8915-0350A818A59D" name="Mangaka">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>7DAFD0C4-201B-EFE9-ACCB-2AC48C1E9B50</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Name" id="476659C2-904B-8E14-8509-97823180A968">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>FCF067F6-B5E2-AF9E-0808-BC0157EF1266</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="birthday" id="F7FF6055-9A98-F0AC-2244-02AFB732492F">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>1F0F4921-3D19-AFD6-2925-97C7A2894E20</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<domain>3B4A01F7-AEB8-F4AD-A2F4-0FBB4F867394</domain>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="biographie" id="D3697B1B-77CE-77B3-753C-8100F4098A8C">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>EE1A51B3-136C-E4C1-784D-2CC8FF55432C</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Mangaka_ID" id="8E8EB3A6-3717-5E4D-38D3-736A1D9E18CE">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F33E6CD2-F477-AAE1-6DAD-68F9DB355AE6" name="Mangaka_PK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="8E8EB3A6-3717-5E4D-38D3-736A1D9E18CE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

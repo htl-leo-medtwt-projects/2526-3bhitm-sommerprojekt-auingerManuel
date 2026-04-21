@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="55155CED-42BD-3DF4-CA81-B58E911A8981" name="Person">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-19 17:49:24 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
+<engineerTo>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Username" id="9AD54417-92C1-6BA3-1BDA-71C5F2C9A8A1">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-19 17:49:34 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
+<engineerTo>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Password" id="8A3DAD16-6FA7-857C-24AC-BEA1253174F7">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-19 17:49:55 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
+<engineerTo>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="AC0D8F2E-7103-B817-427E-FEA2F3664903">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-19 18:02:08 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
+<engineerTo>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="created_at" id="FA317579-6D57-0AD1-328D-EC51A453F42E">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-19 18:02:19 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
+<engineerTo>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<domain>3B4A01F7-AEB8-F4AD-A2F4-0FBB4F867394</domain>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>
