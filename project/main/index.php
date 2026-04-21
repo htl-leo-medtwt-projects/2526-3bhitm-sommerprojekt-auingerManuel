@@ -21,8 +21,14 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
 </head>
 <body>
 
-    <div id="signIn"> <a href="./pages/login/login.php"><p>Sign in</p></div>
 
+    <div id="header">
+      <div id="logo">
+        <img src="./Images/Logo.png" alt="MangaCourt Logo">
+      </div>
+
+      <div id="signIn"> <a href="./pages/login/login.php"><p>Sign in</p></div>
+    </div>
    <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->

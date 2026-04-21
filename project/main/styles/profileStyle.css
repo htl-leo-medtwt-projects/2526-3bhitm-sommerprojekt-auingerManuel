@@ -1,4 +1,5 @@
 #profile-header {
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -7,3 +8,51 @@
     border-radius: var(--radius-md);
     color: var( --color-primary);
 }
+
+#profile-image {
+    width: 2%;
+    height: 2%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#profile-info h2 {
+    font-size: var(--h2);
+    font-family: var(--font-title);
+}
+
+#profile-info p {
+    font-size: var(--text-md);
+    font-family: var(--font-body);
+    color: var(--color-text-secondary);
+}
+
+#profile-picture {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+#profil-fav {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--color-bg-box);
+    border-radius: var(--radius-md);
+    color: var( --color-primary);
+    flex-grow: 1;
+}
+
+
+

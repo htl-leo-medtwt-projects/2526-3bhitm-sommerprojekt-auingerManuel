@@ -1,14 +1,16 @@
 <?php
 session_start();
 
-require_once '../../datenbank/connection.php';
+require_once '../../datenbank/mysqlConnection.php';
 
-require_once '../../datenbank/GetData/user/getUserData.php';
+require_once '../../datenbank/GetData/Profile/profile.php';
 
 require_once '../../datenbank/GetData/country/country.php';
 
+require_once '../../datenbank/GetData/Manga/mangas.php';
+
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../index.php");
+    header("Location: ../../../index.php");
     exit();
 } else {
     $userId = $_SESSION['user_id'];
@@ -31,6 +33,36 @@ $countryData = getCountry($userId);
 </head>
 <body>
 
+<div id="header">
+      <div id="logo">
+        <img src="../../Images/Logo.png" alt="MangaCourt Logo">
+      </div>
+</div>
+  
+
+
+
+
+    <div id="profile-header">
+        <div id="profile-picture">
+            <img src="../../Images/dummy.png" alt="dummy">
+        </div>
+        <div id="profile-info">
+            <h1><?php echo htmlspecialchars($userData['username']); ?></h1>
+            <p><?php echo htmlspecialchars($countryData['countryname']); ?></p>
+        </div>
+    </div>
+
+    <div id="profil-fav">
+       <div class="arrow-left"><img src="../../Images/arrow-left.png" alt="Left Arrow"></div>
+       <div id="fav-mangas">
+        <?php printFavMangas($userId); ?>
+       </div> 
+       <div class="arrow-right"><img src="../../Images/arrow-right.png" alt="Right Arrow"></div>
+    </div>
+
+
+    
 <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
@@ -54,8 +86,8 @@ $countryData = getCountry($userId);
       <span class="nav-label">Top</span>
     </a>
  
-    <!-- HomePage (active by default) -->
-    <a href="../../index.php" class="nav-item active" data-id="homepage">
+    <!-- HomePage  -->
+    <a href="../../index.php" class="nav-item" data-id="homepage">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -65,8 +97,8 @@ $countryData = getCountry($userId);
       <span class="nav-label">HomePage</span>
     </a>
  
-    <!-- Profil -->
-    <a href="./profile.php" class="nav-item" data-id="profil">
+    <!-- Profil (active by default) -->
+    <a href="./profile.php" class="nav-item active" data-id="profil">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -77,17 +109,6 @@ $countryData = getCountry($userId);
     </a>
  
   </nav>
-
-
-    <div id="profile-header">
-        <div id="profile-picture">
-            <img src="../../Images/dummy.png" alt="dummy">
-        </div>
-        <div id="profile-info">
-            <h1><?php echo htmlspecialchars($userData['username']); ?></h1>
-            <p><?php echo htmlspecialchars($countryData['countryname']); ?></p>
-        </div>
-    </div>
 
 </body>
 </html>
