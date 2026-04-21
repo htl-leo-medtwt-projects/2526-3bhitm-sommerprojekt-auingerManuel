@@ -1,14 +1,15 @@
 <?php
 
-require_once "./datenbank/mysqlConnection.php";
+require_once '../../datenbank/mysqlConnection.php';
+require_once '../../datenbank/GetData/manga/mangas.php';
+require_once '../../datenbank/GetData/chapter/chapter.php';
 
-require "./datenbank/GetData/manga/mangas.php";
+$manga = getManga($_GET['id']);
+$chapters = getChapter($_GET['id']);
 
-echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
 
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,12 +17,13 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
-    <link rel="stylesheet" href="./mainstyle.css">
-    <script src="./nav.js" defer></script>
+    <link rel="stylesheet" href="../../mainstyle.css">
+    <link rel="stylesheet" href="../../styles/mangaStyle.css">
+    <script src="../../nav.js" defer></script>
 </head>
 <body>
 
-   <nav class="nav-bar" id="navBar">
+<nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
     <a href="#" class="nav-item" data-id="myinteraction">
@@ -45,7 +47,7 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     </a>
  
     <!-- HomePage (active by default) -->
-    <a href="#" class="nav-item active" data-id="homepage">
+    <a href="../../index.php" class="nav-item active" data-id="homepage">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -68,9 +70,24 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
  
   </nav>
 
-  <?php
-getMangas();
-  ?>
+
+    <div id="manga-detail">
+        <h1><?php echo $manga['name']; ?></h1>
+        <p>By: <?php echo $manga['mangaka_name']; ?></p>
+        <img id="manga-image" src="../../Images/dummy.png" alt="<?php echo $manga['name']; ?>">
+
+       <div id="chapter-header"> <h2>Chapters</h2> </div>
+            <div id="chapter-list">
+            <?php foreach ($chapters as $chapter): ?>
+                <div class="chapter-item">
+                    <a href="./chapter.php?id=<?php echo $chapter['chapter_id']; ?>">
+                        <?php echo $chapter['chapter_id']; ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
     
 </body>
 </html>

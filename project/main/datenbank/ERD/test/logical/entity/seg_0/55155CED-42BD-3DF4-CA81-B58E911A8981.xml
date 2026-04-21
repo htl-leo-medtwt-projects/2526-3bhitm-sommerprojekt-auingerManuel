@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E77A5086-5BDC-4A51-F970-1E90581E7A5A" name="User">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="55155CED-42BD-3DF4-CA81-B58E911A8981" name="Person">
 <createdBy>admin</createdBy>
-<createdTime>2026-04-07 12:55:20 UTC</createdTime>
-<ownerDesignName>project</ownerDesignName>
+<createdTime>2026-04-19 17:49:24 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
 <engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
 </engineerTo>
 <adequatelyNormalized>NO</adequatelyNormalized>
 <expectedVolumes>0</expectedVolumes>
@@ -15,12 +15,12 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Firstname" id="BA648E24-FD4B-798E-C978-A898E62EA245">
+<Attribute name="Username" id="9AD54417-92C1-6BA3-1BDA-71C5F2C9A8A1">
 <createdBy>admin</createdBy>
-<createdTime>2026-04-07 12:55:25 UTC</createdTime>
-<ownerDesignName>project</ownerDesignName>
+<createdTime>2026-04-19 17:49:34 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
 <engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>
@@ -28,12 +28,12 @@
 <domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Lastname" id="08BC692A-8DCB-7F31-2FF0-78B078D38658">
+<Attribute name="Password" id="8A3DAD16-6FA7-857C-24AC-BEA1253174F7">
 <createdBy>admin</createdBy>
-<createdTime>2026-04-07 12:55:34 UTC</createdTime>
-<ownerDesignName>project</ownerDesignName>
+<createdTime>2026-04-19 17:49:55 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
 <engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>
@@ -41,26 +41,25 @@
 <domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="email" id="007A4117-D617-9683-FD7E-8E0BC613215B">
+<Attribute name="email" id="AC0D8F2E-7103-B817-427E-FEA2F3664903">
 <createdBy>admin</createdBy>
-<createdTime>2026-04-20 04:47:42 UTC</createdTime>
-<ownerDesignName>project</ownerDesignName>
+<createdTime>2026-04-19 18:02:08 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
 <engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
+<use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="created_at" id="C038BCA7-C66B-4B7D-BE0E-C7BA3EA2956A">
+<Attribute name="created_at" id="FA317579-6D57-0AD1-328D-EC51A453F42E">
 <createdBy>admin</createdBy>
-<createdTime>2026-04-20 04:47:54 UTC</createdTime>
-<ownerDesignName>project</ownerDesignName>
+<createdTime>2026-04-19 18:02:19 UTC</createdTime>
+<ownerDesignName>test</ownerDesignName>
 <engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
+<item key="1B6AE799-FCA3-0005-8015-4CF30CDFF07E" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
 <use>0</use>

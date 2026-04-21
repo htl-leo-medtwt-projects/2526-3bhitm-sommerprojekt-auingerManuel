@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B10A2501-5434-FC23-15CE-CD4D3EA195DF" name="FavMangas">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Manga_Manga_ID" id="AE0AFA0C-DB1F-DEF2-F203-4C59B33D179E">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E3075D56-1482-33CE-A503-CE0F4F965ED4" referredColumn="665C0BB3-0CC2-CA36-C74F-B1C8A3626AE7"/>
+</associations>
+</Column>
+<Column name="User_User_ID" id="2EF0208E-BA0F-3F96-1A66-F65E127FAB58">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="46ECE797-296C-758D-6E05-20450A1671CA" referredColumn="F77BEB36-9A2C-8C98-4CE0-35C100E25724"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="79354BB5-5FE2-CFAA-9C6B-13CC1734FA91" name="FavMangas_PK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<ownerDesignName>project</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE0AFA0C-DB1F-DEF2-F203-4C59B33D179E"/>
+<colUsage columnID="2EF0208E-BA0F-3F96-1A66-F65E127FAB58"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3DF346E2-D85B-B504-6D1C-EEA1803D295E" name="FavMangas_Manga_FK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>5EA51E6B-D4D7-23B6-8806-60536443C3A0</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE0AFA0C-DB1F-DEF2-F203-4C59B33D179E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31ABDF76-4867-EEE4-8AD3-DE0B39803F8A" name="FavMangas_User_FK">
+<createdBy>admin</createdBy>
+<createdTime>2026-04-20 04:51:38 UTC</createdTime>
+<generatorID>5EA51E6B-D4D7-23B6-8806-60536443C3A0</generatorID>
+<ownerDesignName>project</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2EF0208E-BA0F-3F96-1A66-F65E127FAB58"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

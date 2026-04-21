@@ -29,20 +29,6 @@
 <defaultValue>sysdate</defaultValue>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="discussedChapter" id="EB12DE87-050D-048A-442B-024E71F12FAC">
-<createdBy>admin</createdBy>
-<createdTime>2026-04-07 12:58:28 UTC</createdTime>
-<ownerDesignName>project</ownerDesignName>
-<engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,1,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Bloger" id="F7C05ADD-96D4-8EB6-E960-CF51B0942630">
 <createdBy>admin</createdBy>
 <createdTime>2026-04-07 12:59:38 UTC</createdTime>
@@ -54,20 +40,6 @@
 <use>0</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <domain>7BE43222-FA1D-8201-C823-A64337482AA9</domain>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="ID" id="F5B0EA25-FC0D-C783-88F0-696C49225236">
-<createdBy>admin</createdBy>
-<createdTime>2026-04-07 13:05:31 UTC</createdTime>
-<generatorID>1E366946-3EA6-D3E1-260F-61884B134D34</generatorID>
-<ownerDesignName>project</ownerDesignName>
-<engineerTo>
-<item key="7EE13D0A-49AA-DF1D-8048-8F57255761E5" value="true"/>
-</engineerTo>
-<referedAttribute>BDD9D1A8-D39E-99D1-BC26-06314C45E441</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
