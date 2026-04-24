@@ -17,17 +17,25 @@ foreach ($mangas as $manga) {
     echo '<h3>' . $manga['name'] . '</h3>';
     echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
     echo '</a>';
+
+    if (isset($_SESSION['user_id']) && isFavManga($_SESSION['user_id'], $manga['manga_id'])) {
+        echo "<div onclick='removeFromFavorites(" . $_SESSION['user_id'] . ", " . $manga['manga_id'] . ")' class='favInfoBox'><p>Remove from Favorites</p></div>";
+    } else {    
+
     if (isset($_SESSION['user_id'])) {
-    echo "<div onclick='addToFavorites(" . $_SESSION['user_id'] . ", " . $manga['manga_id'] . ")' class='addfav'><p>Add to Favorites</p></div>";
+    echo "<div onclick='addToFavorites(" . $_SESSION['user_id'] . ", " . $manga['manga_id'] . ")' class='favInfoBox'><p>Add to Favorites</p></div>";
 
     } else {
-        echo "<div class='addfav'><a href='./pages/Login/login.php'><p>Log in to add to Favorites</p></a></div>";
+        echo "<div class='favInfoBox'><a href='./pages/Login/login.php'><p>Log in to add to Favorites</p></a></div>";
+        }
     }
 
     echo '</div>';
 }
 echo '</div>';
 }
+
+
 
 function getManga($id) {
     global $conn;
@@ -41,6 +49,7 @@ function getManga($id) {
 }
 
 
+
 function getNamebyId($id) {
     global $conn;
     $sql = "SELECT name FROM manga WHERE manga_id = " . intval($id);
@@ -49,6 +58,13 @@ function getNamebyId($id) {
     return $row['name'] ?? null; 
 }
 
+
+function isFavManga($userId, $mangaId) {
+    global $conn;
+    $sql = "SELECT * FROM favmangas WHERE user_user_id = " . intval($userId) . " AND manga_manga_id = " . intval($mangaId);
+    $result = mysqli_query($conn, $sql);
+    return mysqli_num_rows($result) > 0;
+}
 
 
 function getfavMangas($userId) {
@@ -78,7 +94,7 @@ function printFavMangas($userId) {
             echo '<h3>' . $manga['name'] . '</h3>';
             echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
             echo '</a>';
-            echo "<div onclick='removeFromFavorites(" . $userId . ", " . $manga['manga_id'] . ")' class='removefav'><p>Remove from Favorites</p></div>";
+            echo "<div onclick='removeFromFavorites_profil(" . $userId . ", " . $manga['manga_id'] . ")' class='removefav'><p>Remove from Favorites</p></div>";
             echo '</div>';
         }
         echo '</div>';

@@ -333,7 +333,7 @@ img {
   margin-bottom: var(--space-3);
 }
 
-.addfav {
+.favInfoBox {
     padding: 10px 20px;
     background: var(--color-bg-main);
     border-radius: var(--radius-sm);
@@ -344,7 +344,7 @@ img {
     margin-top: var(--space-1);
 }
 
-.addfav a {
+.favInfoBox a {
     color: var(--color-primary);
     text-decoration: none;
 }
