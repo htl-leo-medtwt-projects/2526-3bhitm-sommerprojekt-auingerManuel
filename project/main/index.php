@@ -1,4 +1,5 @@
 <?php
+Session_start();
 
 require_once "./datenbank/mysqlConnection.php";
 
@@ -17,6 +18,7 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
     <link rel="stylesheet" href="./mainstyle.css">
+    <script src="./scripts/favMangas.js" defer></script>
     <script src="./nav.js" defer></script>
 </head>
 <body>
@@ -27,8 +29,15 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
         <img src="./Images/Logo.png" alt="MangaCourt Logo">
       </div>
 
-      <div id="signIn"> <a href="./pages/login/login.php"><p>Sign in</p></div>
-    </div>
+      <?php
+
+       if (isset($_SESSION['user_id'])) {
+        echo '<div id="signIn"><a href="./datenbank/GetData/user/logoutUser.php"><p>Log Out</p></a></div>';
+      } else {
+        echo '<div id="signIn"><a href="./pages/login/login.php"><p>Sign in</p></a></div>';
+      }
+      ?>
+      </div>
    <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
@@ -53,7 +62,7 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     </a>
  
     <!-- HomePage (active by default) -->
-    <a href="../../index.php" class="nav-item active" data-id="homepage">
+    <a href="./index.php" class="nav-item active" data-id="homepage">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">

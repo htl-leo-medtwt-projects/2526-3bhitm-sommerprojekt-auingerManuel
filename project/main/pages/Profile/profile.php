@@ -10,7 +10,7 @@ require_once '../../datenbank/GetData/country/country.php';
 require_once '../../datenbank/GetData/Manga/mangas.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../../index.php");
+    header("Location: ../../index.php");
     exit();
 } else {
     $userId = $_SESSION['user_id'];
@@ -30,6 +30,7 @@ $countryData = getCountry($userId);
     <link rel="stylesheet" href="../../mainstyle.css">
     <link rel="stylesheet" href="../../styles/profileStyle.css">
     <script src="../../nav.js" defer></script>
+    <script src="../../scripts/favMangas.js" defer></script>
 </head>
 <body>
 
@@ -54,11 +55,11 @@ $countryData = getCountry($userId);
     </div>
 
     <div id="profil-fav">
-       <div class="arrow-left"><img src="../../Images/arrow-left.png" alt="Left Arrow"></div>
+       
       
         <?php printFavMangas($userId); ?>
        
-       <div class="arrow-right"><img src="../../Images/arrow-right.png" alt="Right Arrow"></div>
+    
     </div>
 
 </main>

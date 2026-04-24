@@ -106,7 +106,7 @@
       min-height: 100vh;
       font-family: var(--font-body);
       overflow-x: hidden;
-      padding-top: 80px;
+      padding-top: 80px; 
     }
 
     /* ── Header ── */
@@ -342,4 +342,9 @@ img {
     font-size: var(--text-md);
     transition: var(--transition);
     margin-top: var(--space-1);
+}
+
+.addfav a {
+    color: var(--color-primary);
+    text-decoration: none;
 }

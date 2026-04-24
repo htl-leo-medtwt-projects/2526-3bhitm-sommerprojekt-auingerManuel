@@ -58,7 +58,7 @@ $chapters = getChapter($manga);
     </a>
  
     <!-- Profil -->
-    <a href="#" class="nav-item" data-id="profil">
+    <a href="../Profile/profile.php" class="nav-item" data-id="profil">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">

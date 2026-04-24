@@ -6,6 +6,7 @@ main {
     flex-direction: column;
     gap: var(--space-3);
     padding: var(--space-3);
+    padding-top: 0;
     padding-bottom: 120px;
     margin-top: 0;
 }
@@ -15,6 +16,7 @@ main {
         max-width: 800px;
         margin: 0 auto;
         padding: var(--space-5);
+        padding-top: 0;
         padding-bottom: var(--space-5);
         gap: var(--space-5);
     }
@@ -33,7 +35,7 @@ main {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
     text-align: center;
-    margin-top: 0;
+    margin-top: calc(var(--space-3) * -1);
 }
 
 @media (min-width: 768px) {
@@ -195,4 +197,13 @@ main {
     display: flex;
     gap: var(--space-3);
     padding-bottom: var(--space-2);
+    color: var(--color-text-secondary);
+}
+
+body {
+    padding-top: 0;
+}
+
+#profil-fav {
+    color: var(--color-text-secondary);
 }
