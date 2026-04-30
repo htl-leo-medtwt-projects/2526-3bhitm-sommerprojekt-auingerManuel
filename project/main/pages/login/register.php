@@ -12,6 +12,7 @@ require "../../datenbank/GetData/user/saveUser.php";
     <meta charset="UTF-8">
     <title>Registrieren - MangaCourt</title>
     <link rel="stylesheet" href="../../mainstyle.css">
+    <link rel="stylesheet" href="../../styles/loginStyle_registerStyle.css">
     <link rel="stylesheet" href="../../styles/registerStyle.css">
 </head>
 <body>

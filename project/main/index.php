@@ -18,7 +18,10 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
     <link rel="stylesheet" href="./mainstyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="./scripts/favMangas.js" defer></script>
+    <script src="./scripts/mangaListAnimation.js" defer></script>
     <script src="./nav.js" defer></script>
 </head>
 <body>

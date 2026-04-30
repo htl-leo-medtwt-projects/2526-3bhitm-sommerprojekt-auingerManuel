@@ -15,6 +15,7 @@ require "../../datenbank/GetData/user/loginUser.php";
     <meta charset="UTF-8">
     <title>Login - MangaCourt</title>
     <link rel="stylesheet" href="../../mainstyle.css">
+    <link rel="stylesheet" href="../../styles/loginStyle_registerStyle.css">
     <link rel="stylesheet" href="../../styles/loginStyle.css">
 </head>
 <body>

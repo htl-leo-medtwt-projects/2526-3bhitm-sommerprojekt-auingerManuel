@@ -6,3 +6,4 @@ CREATE TABLE chapter (
     PRIMARY KEY (chapter_id),
     FOREIGN KEY (manga_manga_id) REFERENCES manga(manga_id)
 );
+

@@ -1,66 +1,8 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            background-color: var(--color-bg-main);
-            font-family: Arial, sans-serif;
-            color: var(--color-text-primary);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .card {
-            background-color: var(--color-bg-box);
-            padding: 80px;
-            border-radius: var(--radius-lg);
-            width: 70%;
-            text-align: center;
-        }
-
-        .card h1 {
-            margin-bottom: 40px;
-            font-size: 40px;
-            color: var(--color-primary);
-        }
-
-        .card input {
-            width: 100%;
-            padding: 20px;
-            margin-bottom: 24px;
-            border: none;
-            border-radius: var(--radius-md);
-            background-color: var(--color-bg-alt);
-            color: var(--color-text-primary);
-            font-size: 18px;
-        }
-
-        .card input::placeholder { color: var(--color-text-muted); }
-
-        .card button {
-            width: 100%;
-            padding: 20px;
-            background-color: var(--color-primary);
-            border: none;
-            border-radius: var(--radius-md);
-            color: var(--color-bg-main);
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .card button:hover { background-color: var(--color-primary-hover); }
-
-        .error {
-            color: var(--color-primary);
-            margin-bottom: 16px;
-            font-size: var(--text-sm);
-        }
 
         .register-link {
             margin-top: 16px;
-            font-size: var(--text-sm);
+            font-size: var(--text-lg);
             color: var(--color-text-muted);
         }
 

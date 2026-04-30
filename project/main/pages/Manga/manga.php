@@ -5,7 +5,7 @@ require_once '../../datenbank/GetData/manga/mangas.php';
 require_once '../../datenbank/GetData/chapter/chapter.php';
 
 $manga = getManga($_GET['id']);
-$chapters = getChapter($manga);
+$chapters = getChapter($manga['manga_id']);
 
 
 
@@ -19,9 +19,19 @@ $chapters = getChapter($manga);
     <title>MangaCourt</title>
     <link rel="stylesheet" href="../../mainstyle.css">
     <link rel="stylesheet" href="../../styles/mangaStyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../../nav.js" defer></script>
+    <script src="../../scripts/chapterAnimation.js" defer></script>
 </head>
 <body>
+
+<div id="header">
+      <div id="logo">
+        <img src="../../Images/Logo.png" alt="MangaCourt Logo">
+      </div>
+
+</div>
 
 <nav class="nav-bar" id="navBar">
  
@@ -80,7 +90,7 @@ $chapters = getChapter($manga);
             <div id="chapter-list">
             <?php foreach ($chapters as $chapter): ?>
                 <div class="chapter-item">
-                    <a href="./chapter.php?id=<?php echo $chapter['chapter_id']; ?>">
+                    <a href="../post/post.php?id=<?php echo $chapter['chapter_id']; ?>">
                         <?php echo $chapter['name']; ?>
                     </a>
                 </div>

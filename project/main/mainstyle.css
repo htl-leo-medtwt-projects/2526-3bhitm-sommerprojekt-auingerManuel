@@ -243,7 +243,7 @@
     background: rgba(255, 255, 255, 0.06);
 }
  
-    /* ── Icon wrapper ── */
+    
     .nav-icon {
       width: 26px;
       height: 26px;
@@ -254,7 +254,7 @@
       font-size: 20px;
     }
  
-    /* ── Label ── */
+    
     .nav-label {
       font-size: 11px;
       color: #777;
@@ -272,7 +272,7 @@
       font-weight: 600;
     }
 
-/* ── Manga List ── */
+
 .manga-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
