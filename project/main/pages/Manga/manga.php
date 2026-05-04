@@ -31,7 +31,15 @@ $chapters = getChapter($manga['manga_id']);
         <img src="../../Images/Logo.png" alt="MangaCourt Logo">
       </div>
 
-</div>
+      <?php
+
+       if (isset($_SESSION['user_id'])) {
+        echo '<div id="signIn"><a href="./datenbank/GetData/user/logoutUser.php"><p>Log Out</p></a></div>';
+      } else {
+        echo '<div id="signIn"><a href="./pages/login/login.php"><p>Sign in</p></a></div>';
+      }
+      ?>
+      </div>
 
 <nav class="nav-bar" id="navBar">
  
@@ -84,7 +92,7 @@ $chapters = getChapter($manga['manga_id']);
     <div id="manga-detail">
         <h1><?php echo $manga['name']; ?></h1>
         <p>By: <?php echo $manga['mangaka_name']; ?></p>
-        <img id="manga-image" src="../../Images/dummy.png" alt="<?php echo $manga['name']; ?>">
+        <img id="manga-image" src="../../Images/logos/<?php echo $manga['name']; ?>.jpg" alt="<?php echo $manga['name']; ?>">
 
        <div id="chapter-header"> <h2>Chapters</h2> </div>
             <div id="chapter-list">
