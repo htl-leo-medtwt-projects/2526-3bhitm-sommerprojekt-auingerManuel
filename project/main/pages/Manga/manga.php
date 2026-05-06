@@ -98,7 +98,7 @@ $chapters = getChapter($manga['manga_id']);
             <div id="chapter-list">
             <?php foreach ($chapters as $chapter): ?>
                 <div class="chapter-item">
-                    <a href="../post/post.php?id=<?php echo $chapter['chapter_id']; ?>">
+                    <a href="../post/post.php?manga_id=<?php echo $manga['manga_id']; ?>&chapter_id=<?php echo $chapter['chapter_id']; ?>">
                         <?php echo $chapter['name']; ?>
                     </a>
                 </div>

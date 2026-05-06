@@ -90,7 +90,7 @@ function printFavMangas($userId) {
         foreach ($favMangas as $manga) {
             echo '<div class="manga-item">';
             echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
-            echo '<img src="../../Images/logos/' . $manga['manga_id'] . '.jpg" alt="' . $manga['name'] . '">';
+            echo '<img src="../../Images/logos/' . $manga['name'] . '.jpg" alt="' . $manga['name'] . '">';
             echo '<h3>' . $manga['name'] . '</h3>';
             echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
             echo '</a>';
