@@ -85,10 +85,12 @@ function printFavMangas($userId) {
     if (empty($favMangas)) {
         echo "<p>Du hast noch keine Favoriten hinzugefügt.</p>";
     } else {
-        echo '<div class="arrow-left"><img src="../../Images/arrow-left.png" alt="Left Arrow"></div>';
-        echo '<div class="fav-manga-list">';
+        echo '<div class="fav-slider-container">';
+        echo '<div class="arrow-left slider-arrow" onclick="scrollMangaSlider(\'prev\')"><img src="../../Images/arrow-left.png" alt="Left Arrow"></div>';
+        echo '<div class="fav-manga-slider">';
+        echo '<div class="fav-manga-list" id="mangaSlider">';
         foreach ($favMangas as $manga) {
-            echo '<div class="manga-item">';
+            echo '<div class="manga-item" data-manga-id="' . $manga['manga_id'] . '">';
             echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
             echo '<img src="../../Images/logos/' . $manga['name'] . '.jpg" alt="' . $manga['name'] . '">';
             echo '<h3>' . $manga['name'] . '</h3>';
@@ -98,7 +100,9 @@ function printFavMangas($userId) {
             echo '</div>';
         }
         echo '</div>';
-        echo '<div class="arrow-right"><img src="../../Images/arrow-right.png" alt="Right Arrow"></div>';
+        echo '</div>';
+        echo '<div class="arrow-right slider-arrow" onclick="scrollMangaSlider(\'next\')"><img src="../../Images/arrow-right.png" alt="Right Arrow"></div>';
+        echo '</div>';
     }
 }
 

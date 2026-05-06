@@ -207,3 +207,74 @@ body {
 #profil-fav {
     color: var(--color-text-secondary);
 }
+
+/* ─────────────────── MANGA SLIDER STYLES ─────────────────── */
+
+.fav-slider-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.fav-manga-slider {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    max-width: 220px;
+}
+
+.fav-manga-list {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    display: flex;
+    gap: var(--space-3);
+}
+
+/* Hide scrollbar for Chrome, Safari */
+.fav-manga-list::-webkit-scrollbar {
+    display: none;
+}
+
+.fav-manga-list .manga-item {
+    flex: 0 0 200px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.fav-manga-list .manga-item:hover {
+    transform: translateY(-8px);
+}
+
+.slider-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(229, 57, 53, 0.15);
+    border-radius: var(--radius-sm);
+}
+
+.slider-arrow:hover {
+    background: rgba(229, 57, 53, 0.3);
+}
+
+.slider-arrow img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(1);
+    transition: var(--transition);
+}
+
+.slider-arrow:hover img {
+    filter: brightness(1.5);
+    transform: scale(1.15);
+}

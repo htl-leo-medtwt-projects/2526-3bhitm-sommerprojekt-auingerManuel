@@ -75,3 +75,14 @@ function removeFromFavorites(userId, mangaId) {
         }   
     });
 }
+
+
+function scrollMangaSlider(direction) {
+    const slider = document.getElementById('mangaSlider');
+    const scrollAmount = slider.clientWidth;
+    if (direction === 'next') {
+        slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    } else {
+        slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }       
+}
