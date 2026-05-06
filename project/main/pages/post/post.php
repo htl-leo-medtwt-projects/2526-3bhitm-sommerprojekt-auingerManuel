@@ -1,6 +1,19 @@
 <?php
 session_start();
 
+require_once '../../datenbank/mysqlConnection.php';
+require_once '../../datenbank/GetData/manga/mangas.php';
+require_once '../../datenbank/GetData/chapter/chapter.php';
+require_once '../../datenbank/GetData/post/post.php';
+
+$manga = getManga($_GET['manga_id']);
+$chapter = getChapterByMangaAndChapterId($_GET['manga_id'], $_GET['chapter_id']);
+$posts = getPost($_GET['manga_id'], $_GET['chapter_id']);
+$postCount = getCountOfposts($_GET['manga_id'], $_GET['chapter_id']);
+$alreadyPosted = isset($_SESSION['user_id']) ? 
+checkAlreadyPosted($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : false;
+$userPost = isset($_SESSION['user_id']) && $alreadyPosted ? 
+getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null;
 
 
 
@@ -13,7 +26,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
     <link rel="stylesheet" href="../../mainstyle.css">
+    <link rel="stylesheet" href="../../styles/postStyle.css">
     <script src = "../../nav.js"></script>
+    <script src="../../scripts/postRating.js"></script>
 </head>
 <body>
 
@@ -31,7 +46,89 @@ session_start();
         echo '<div id="signIn"><a href="./pages/login/login.php"><p>Sign in</p></a></div>';
       }
       ?>
+     </div>
+
+    <div id="posts">
+        <h2>Posts for <?php echo htmlspecialchars($manga['name'] ?? 'Unknown') . " - Chapter " . htmlspecialchars($chapter['name'] ?? 'Unknown'); ?></h2>
+        <p>Total Posts: <?php echo $postCount; ?></p>
+
+      <?php if (!isset($_SESSION['user_id'])): ?>
+        <div id="post-add">
+          <h3>Sign in to post</h3>
+          <p>You need to be logged in to add posts and rate this chapter.</p>
+          <a href="../../pages/login/login.php" class="login-link">Sign in now</a>
+        </div>
+      <?php elseif ($alreadyPosted && $userPost): ?>
+        <div id="post-add">
+          <h3>Update Your Rating</h3>
+          <p>You have already posted for this chapter. You can update your rating:</p>
+          <div id="post-rating">
+            <label>Update rating:</label>
+            <div class="stars-container">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+            <input type="hidden" id="rating-value" value="<?php echo htmlspecialchars($userPost['rating'] ?? 0); ?>">
+          </div>
+          <form action="../../datenbank/GetData/post/updateRating.php" method="post" id="update-rating-form">
+            <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($userPost['post_id']); ?>">
+            <input type="hidden" name="manga_id" value="<?php echo htmlspecialchars($_GET['manga_id']); ?>">
+            <input type="hidden" name="chapter_id" value="<?php echo htmlspecialchars($_GET['chapter_id']); ?>">
+            <input type="hidden" name="rating_value" id="form-rating-value" value="<?php echo htmlspecialchars($userPost['rating'] ?? 0); ?>">
+            <button type="submit">Update Rating</button>
+          </form>
+        </div>
+      <?php else: ?>
+        <div id="post-add">
+          <h3>Add New Post</h3>
+          <div id="post-rating">
+            <label>Rate this chapter:</label>
+            <div class="stars-container">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
+            </div>
+            <input type="hidden" id="rating-value" value="0">
+          </div>
+          <form action="../../datenbank/GetData/post/addPost.php" method="post" id="post-form">
+            <input type="hidden" name="manga_id" value="<?php echo htmlspecialchars($_GET['manga_id']); ?>">
+            <input type="hidden" name="chapter_id" value="<?php echo htmlspecialchars($_GET['chapter_id']); ?>">
+            <input type="hidden" name="rating_value" id="form-rating-value" value="0">
+            <textarea name="salutation" placeholder="Write your post here..." required></textarea>
+            <button type="submit">Add Post</button>
+          </form>
+        </div>
+      <?php endif; ?>
+
+      <div id="post-list">
+        <?php foreach ($posts as $post): ?>
+            <div class="post-item">
+                <p><strong><?php echo htmlspecialchars($post['bloger_name']); ?></strong> said:</p>
+                <p><?php echo nl2br(htmlspecialchars($post['salutation'])); ?></p>
+                <div id="posts-rating" class="post-rating">
+                  <?php 
+                    $rating = isset($post['rating']) ? intval($post['rating']) : 0;
+                    if ($rating > 0) {
+                      for ($i = 1; $i <= 5; $i++) {
+                        echo '<span class="rating-star' . ($i <= $rating ? ' filled' : '') . '">★</span>';
+                      }
+                    } else {
+                      echo '<span class="no-rating">No rating</span>';
+                    }
+                  ?>
+                </div>
+                <p><em>Posted on: <?php echo htmlspecialchars($post['create_at']); ?></em></p>
+            </div>
+        <?php endforeach; ?>
+
       </div>
+</div>
+
    <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
