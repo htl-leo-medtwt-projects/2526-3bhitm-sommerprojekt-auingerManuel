@@ -48,7 +48,15 @@ function getManga($id) {
     return $manga;
 }
 
-
+function getMangaSearch($searchTerm) {
+    global $conn;
+    $sql = "SELECT manga.manga_id, manga.name, mangaka.name AS mangaka_name 
+            FROM manga 
+            JOIN mangaka ON manga.mangaka_mangaka_id = mangaka.mangaka_id
+            WHERE manga.name LIKE '%" . mysqli_real_escape_string($conn, $searchTerm) . "%'";
+    $result = mysqli_query($conn, $sql);
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
 
 function getNamebyId($id) {
     global $conn;
@@ -91,7 +99,7 @@ function printFavMangas($userId) {
         echo '<div class="fav-manga-list" id="mangaSlider">';
         foreach ($favMangas as $manga) {
             echo '<div class="manga-item" data-manga-id="' . $manga['manga_id'] . '">';
-            echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
+            echo '<a href="../Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
             echo '<img src="../../Images/logos/' . $manga['name'] . '.jpg" alt="' . $manga['name'] . '">';
             echo '<h3>' . $manga['name'] . '</h3>';
             echo '<p>By: ' . $manga['mangaka_name'] . '</p>';

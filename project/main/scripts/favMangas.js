@@ -85,4 +85,11 @@ function scrollMangaSlider(direction) {
     } else {
         slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     }       
+
+    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
+        document.querySelector('.arrow-right').style.display = 'none';
+    } else {
+        document.querySelector('.arrow-right').style.display = 'block';
+    }   
+
 }

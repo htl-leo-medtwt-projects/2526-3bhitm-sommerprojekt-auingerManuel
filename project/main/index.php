@@ -22,6 +22,7 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="./scripts/favMangas.js" defer></script>
     <script src="./scripts/mangaListAnimation.js" defer></script>
+    <script src="./scripts/searchManga.js" defer></script>
     <script src="./nav.js" defer></script>
 </head>
 <body>
@@ -41,6 +42,16 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
       }
       ?>
       </div>
+
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search for manga...">
+    <button id="searchButton">Search</button>
+  </div>
+
+ <?php
+getMangas();
+  ?>
+
    <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
@@ -88,9 +99,7 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
  
   </nav>
 
-  <?php
-getMangas();
-  ?>
+ 
     
 </body>
 </html>
