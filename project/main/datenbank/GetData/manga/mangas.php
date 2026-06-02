@@ -11,11 +11,15 @@ $mangas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 echo '<div class="manga-list">';
 foreach ($mangas as $manga) {
+
+    $mangaRating = getMangaRating($manga['manga_id']);
+
     echo '<div class="manga-item">';
     echo '<a href="./pages/Manga/manga.php?id=' . $manga['manga_id'] . '" class="manga-item">';
     echo '<img src="./Images/logos/' . $manga['name'] . '.jpg" alt="' . $manga['name'] . '">';
     echo '<h3>' . $manga['name'] . '</h3>';
     echo '<p>By: ' . $manga['mangaka_name'] . '</p>';
+    echo '<p>Rating: ' . htmlspecialchars($mangaRating ?? 0) . '/5</p>';
     echo '</a>';
 
     if (isset($_SESSION['user_id']) && isFavManga($_SESSION['user_id'], $manga['manga_id'])) {
@@ -29,6 +33,7 @@ foreach ($mangas as $manga) {
         echo "<div class='favInfoBox'><a href='./pages/Login/login.php'><p>Log in to add to Favorites</p></a></div>";
         }
     }
+   
 
     echo '</div>';
 }

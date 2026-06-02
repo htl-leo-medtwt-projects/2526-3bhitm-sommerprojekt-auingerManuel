@@ -5,6 +5,7 @@ CREATE TABLE users (
     email              VARCHAR(60),
     created_at         DATE,
     country_country_id INT NOT NULL,
+    imageName        VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY (user_id),
     UNIQUE KEY username_unique (username),
     FOREIGN KEY (country_country_id) REFERENCES country(country_id)

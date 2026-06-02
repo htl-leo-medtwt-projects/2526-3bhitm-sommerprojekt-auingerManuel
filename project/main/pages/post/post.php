@@ -5,6 +5,11 @@ require_once '../../datenbank/mysqlConnection.php';
 require_once '../../datenbank/GetData/manga/mangas.php';
 require_once '../../datenbank/GetData/chapter/chapter.php';
 require_once '../../datenbank/GetData/post/post.php';
+require_once '../../datenbank/GetData/user/getUserData.php';
+require_once '../../datenbank/GetData/Comments/comments.php';
+
+
+
 
 $manga = getManga($_GET['manga_id']);
 $chapter = getChapterByMangaAndChapterId($_GET['manga_id'], $_GET['chapter_id']);
@@ -16,6 +21,10 @@ $userPost = isset($_SESSION['user_id']) && $alreadyPosted ?
 getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null;
 
 
+
+
+
+$userData = getUserData($_SESSION['user_id']);
 
 ?>
 
@@ -29,6 +38,7 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
     <link rel="stylesheet" href="../../styles/postStyle.css">
     <script src = "../../nav.js"></script>
     <script src="../../scripts/postRating.js"></script>
+    <script src="../../scripts/post.js"></script>
 </head>
 <body>
 
@@ -60,9 +70,9 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
         </div>
       <?php elseif ($alreadyPosted && $userPost): ?>
         <div id="post-add">
-          <h3>Update Your Rating</h3>
-          <p>You have already posted for this chapter. You can update your rating:</p>
-          <div id="post-rating">
+          <h3>Update Your Post</h3>
+          <p>You have already posted for this chapter. You can update your post and rating:</p>
+          <div id="rating">
             <label>Update rating:</label>
             <div class="stars-container">
               <span class="star" data-value="1">★</span>
@@ -73,18 +83,19 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
             </div>
             <input type="hidden" id="rating-value" value="<?php echo htmlspecialchars($userPost['rating'] ?? 0); ?>">
           </div>
-          <form action="../../datenbank/GetData/post/updateRating.php" method="post" id="update-rating-form">
+          <form action="../../datenbank/GetData/post/updatePost.php" method="post" id="update-rating-form">
             <input type="hidden" name="post_id" value="<?php echo htmlspecialchars($userPost['post_id']); ?>">
             <input type="hidden" name="manga_id" value="<?php echo htmlspecialchars($_GET['manga_id']); ?>">
             <input type="hidden" name="chapter_id" value="<?php echo htmlspecialchars($_GET['chapter_id']); ?>">
             <input type="hidden" name="rating_value" id="form-rating-value" value="<?php echo htmlspecialchars($userPost['rating'] ?? 0); ?>">
-            <button type="submit">Update Rating</button>
-          </form>
+            <textarea name="salutation" placeholder="Update your post text..." required><?php echo htmlspecialchars($userPost['salutation'] ?? ''); ?></textarea>
+            <button type="submit">Update Post</button>
+          </form>          
         </div>
       <?php else: ?>
         <div id="post-add">
           <h3>Add New Post</h3>
-          <div id="post-rating">
+          <div id="rating">
             <label>Rate this chapter:</label>
             <div class="stars-container">
               <span class="star" data-value="1">★</span>
@@ -108,9 +119,19 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
       <div id="post-list">
         <?php foreach ($posts as $post): ?>
             <div class="post-item">
+                <img src="<?php 
+
+
+                // Userdaten für Name und Profilbild des Posters holen
+                $userFromPost = getUserByPost($post['post_id']);
+                $profileImage = (!empty($userFromPost['imageName'])) ? '../../Images/uploads/' . htmlspecialchars($userFromPost['imageName']) . ".jpg" : '../../Images/dummy.png';
+                
+                echo $profileImage;
+            ?>" alt="<?php echo htmlspecialchars($userFromPost['username'] ?? 'User'); ?>">
+                </img>
                 <p><strong><?php echo htmlspecialchars($post['bloger_name']); ?></strong> said:</p>
                 <p><?php echo nl2br(htmlspecialchars($post['salutation'])); ?></p>
-                <div id="posts-rating" class="post-rating">
+                <div id="posts-rating" class="rating">
                   <?php 
                     $rating = isset($post['rating']) ? intval($post['rating']) : 0;
                     if ($rating > 0) {
@@ -123,9 +144,39 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
                   ?>
                 </div>
                 <p><em>Posted on: <?php echo htmlspecialchars($post['create_at']); ?></em></p>
+                <div class="post-actions">
+                  <?php 
+                    $commentCount = getCommentCount($post['post_id']);
+                  ?>
+                  <button class="comment-btn" onclick="openCommentModal(<?php echo $post['post_id']; ?>)">
+                    💬 Comments (<?php echo $commentCount; ?>)
+                  </button>
+                </div>
             </div>
         <?php endforeach; ?>
 
+      </div>
+
+      <!-- Comment Modal -->
+      <div id="commentModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeCommentModal()">&times;</span>
+          <h2>Comments</h2>
+          
+          <div id="comments-display" class="comments-list">
+            <!-- Comments will be loaded here -->
+          </div>
+
+          <?php if (isset($_SESSION['user_id'])): ?>
+            <form id="comment-form" method="POST" action="../../datenbank/GetData/Comments/addComment.php">
+              <input type="hidden" name="post_id" id="comment-post-id" value="">
+              <textarea name="comment_content" placeholder="Write a comment..." required></textarea>
+              <button type="submit" class="submit-comment-btn">Post Comment</button>
+            </form>
+          <?php else: ?>
+            <p class="login-prompt"><a href="../../pages/login/login.php">Sign in</a> to post comments.</p>
+          <?php endif; ?>
+        </div>
       </div>
 </div>
 
@@ -143,7 +194,7 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
     </a>
  
     <!-- Top -->
-    <a href="#" class="nav-item" data-id="top">
+    <a href="../trends/trends.php" class="nav-item" data-id="top">
       <div class="nav-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -174,6 +225,7 @@ getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null
       <span class="nav-label">Profil</span>
     </a>
  </nav>
+    
     
 </body>
 </html>

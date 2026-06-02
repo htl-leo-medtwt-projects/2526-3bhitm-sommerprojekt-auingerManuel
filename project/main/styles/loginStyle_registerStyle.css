@@ -12,9 +12,9 @@
 
         .card {
             background-color: var(--color-bg-box);
-            padding: 80px;
+            padding: 100px;
             border-radius: var(--radius-lg);
-            width: 70%;
+            width: 85%;
             text-align: center;
         }
 

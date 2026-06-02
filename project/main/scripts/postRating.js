@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Reset stars on mouse leave
-    const postRatingDiv = document.getElementById('post-rating');
-    if (postRatingDiv) {
-        postRatingDiv.addEventListener('mouseleave', function() {
+    const ratingDiv = document.getElementById('rating');
+    if (ratingDiv) {
+        ratingDiv.addEventListener('mouseleave', function() {
             updateStars(ratingInput.value);
         });
     }

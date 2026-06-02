@@ -80,3 +80,22 @@ body {
     flex-shrink: 0;
 } 
 
+/* Read-only rating on manga page */
+#manga-detail #rating {
+  pointer-events: none;
+}
+
+#manga-detail #rating .star {
+  cursor: default;
+  pointer-events: none;
+}
+
+#manga-detail #rating .star:hover {
+  color: #cccccc;
+  transform: scale(1);
+}
+
+#manga-detail #rating .star.hover {
+  color: #cccccc;
+  transform: scale(1);
+}

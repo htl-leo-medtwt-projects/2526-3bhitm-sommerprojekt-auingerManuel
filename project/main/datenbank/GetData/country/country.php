@@ -1,8 +1,10 @@
 <?php
 
-function getCountry($id) {
+function getCountry($userId) {
     global $conn;
-    $sql = "SELECT countryname FROM country WHERE country_id = " . intval($id);
+    $sql = "SELECT country.countryname FROM country 
+            JOIN users ON country.country_id = users.country_country_id 
+            WHERE users.user_id = " . intval($userId);
     $result = mysqli_query($conn, $sql);
     return mysqli_fetch_assoc($result); 
 }

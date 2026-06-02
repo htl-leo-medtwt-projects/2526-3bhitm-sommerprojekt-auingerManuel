@@ -2,7 +2,7 @@
 Session_start();
 
 require_once "./datenbank/mysqlConnection.php";
-
+require_once "./datenbank/GetData/rating/rating.php";
 require "./datenbank/GetData/manga/mangas.php";
 
 echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
@@ -27,7 +27,6 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
 </head>
 <body>
 
-
     <div id="header">
       <div id="logo">
         <img src="./Images/Logo.png" alt="MangaCourt Logo">
@@ -41,13 +40,13 @@ echo '<link href="mainstyle.css' . '?' . time() . '" rel="stylesheet">';
         echo '<div id="signIn"><a href="./pages/login/login.php"><p>Sign in</p></a></div>';
       }
       ?>
-      </div>
+  
 
   <div id="searchBar">
     <input type="text" id="searchInput" placeholder="Search for manga...">
     <button id="searchButton">Search</button>
   </div>
-
+</div>
  <?php
 getMangas();
   ?>
@@ -66,7 +65,7 @@ getMangas();
     </a>
  
     <!-- Top -->
-    <a href="#" class="nav-item" data-id="top">
+    <a href="./pages/trends/trends.php" class="nav-item" data-id="top">
       <div class="nav-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">

@@ -1,26 +1,15 @@
 <?php
+
 session_start();
 
-require_once '../../datenbank/mysqlConnection.php';
-require_once '../../datenbank/GetData/manga/mangas.php';
-require_once '../../datenbank/GetData/chapter/chapter.php';
-require_once '../../datenbank/GetData/rating/rating.php';
+require_once "../../datenbank/mysqlConnection.php";
 
-// Accept both 'id' and 'manga_id' parameters for compatibility
-$manga_id = $_GET['id'] ?? $_GET['manga_id'] ?? null;
 
-if (!$manga_id) {
-    die('Error: No manga ID provided');
-}
+$defaultLimit = 10; 
 
-$manga = getManga($manga_id);
+$limit = $defaultLimit;
 
-if (!$manga) {
-    die('Error: Manga not found');
-}
 
-$chapters = getChapter($manga['manga_id']);
-$mangaRating = getMangaRating($manga['manga_id']);
 
 ?>
 
@@ -31,13 +20,12 @@ $mangaRating = getMangaRating($manga['manga_id']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
     <link rel="stylesheet" href="../../mainstyle.css">
-    <link rel="stylesheet" href="../../styles/postStyle.css">
-    <link rel="stylesheet" href="../../styles/mangaStyle.css">
+    <link rel="stylesheet" href="../../styles/trendsStyle.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../../nav.js" defer></script>
-    <script src="../../scripts/chapterAnimation.js" defer></script>
-    <script src="../../scripts/postRating.js" defer></script>
+    <script src="../../scripts/trends.js" defer></script>
 </head>
 <body>
 
@@ -56,7 +44,31 @@ $mangaRating = getMangaRating($manga['manga_id']);
       ?>
       </div>
 
-<nav class="nav-bar" id="navBar">
+<h2>Top Mangas</h2>
+
+    <div id="trends-input">
+  <!-- Methodenauswahl -->
+  <div class="btn-group">
+    <button id="btn-votes" class="active" onclick="selectMethod('votes')">⭐ Top by Votes</button>
+    <button id="btn-comments" onclick="selectMethod('comments')">💬 Top by Comments</button>
+  </div>
+
+  <!-- Slider (ki) -->
+  <label>Anzahl: <strong id="limit-badge">10</strong></label>
+  <input type="range" id="limit-slider" min="0" max="2" step="1" value="2"
+    oninput="updateLimit(this.value)" style="width:100%; margin: 8px 0;" />
+  <div class="slider-labels">
+    <span>3</span><span>5</span><span>10</span>
+  </div>
+
+  <br>
+  <button onclick="loadData()" style="flex:none; width:100%; padding:12px; margin-top:1rem;">
+    Laden
+  </button>
+</div>
+  <div id="results"></div>
+
+  <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
     <a href="#" class="nav-item" data-id="myinteraction">
@@ -70,7 +82,7 @@ $mangaRating = getMangaRating($manga['manga_id']);
     </a>
  
     <!-- Top -->
-    <a href="../../pages/trends/trends.php" class="nav-item" data-id="top">
+    <a href="./trends.php" class="nav-item active" data-id="top">
       <div class="nav-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -80,7 +92,7 @@ $mangaRating = getMangaRating($manga['manga_id']);
     </a>
  
     <!-- HomePage (active by default) -->
-    <a href="../../index.php" class="nav-item active" data-id="homepage">
+    <a href="../../index.php" class="nav-item" data-id="homepage">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -104,35 +116,6 @@ $mangaRating = getMangaRating($manga['manga_id']);
   </nav>
 
 
-    <div id="manga-detail">
-        <h1><?php echo $manga['name']; ?></h1>
-        <p>By: <?php echo $manga['mangaka_name']; ?></p>
-        <img id="manga-image" src="../../Images/logos/<?php echo $manga['name']; ?>.jpg" alt="<?php echo $manga['name']; ?>">
-
-        <div id="rating">
-            <div class="stars-container">
-              <span class="star" data-value="1">★</span>
-              <span class="star" data-value="2">★</span>
-              <span class="star" data-value="3">★</span>
-              <span class="star" data-value="4">★</span>
-              <span class="star" data-value="5">★</span>
-            </div>
-            <input type="hidden" id="rating-value" value="<?php echo htmlspecialchars($mangaRating ?? 0); ?>">
-        </div>
-        <p>Average Rating: <?php echo htmlspecialchars($mangaRating ?? 0); ?>/5</p>
-
-       <div id="chapter-header"> <h2>Chapters</h2> </div>
-            <div id="chapter-list">
-            <?php foreach ($chapters as $chapter): ?>
-                <div class="chapter-item">
-                    <a href="../post/post.php?manga_id=<?php echo $manga['manga_id']; ?>&chapter_id=<?php echo $chapter['chapter_id']; ?>">
-                        <?php echo $chapter['name']; ?>
-                    </a>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-    </div>
     
 </body>
 </html>

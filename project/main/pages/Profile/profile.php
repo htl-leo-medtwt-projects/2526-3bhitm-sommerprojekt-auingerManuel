@@ -7,6 +7,8 @@ require_once '../../datenbank/GetData/Profile/profile.php';
 
 require_once '../../datenbank/GetData/country/country.php';
 
+require_once '../../datenbank/GetData/country/getAllCountries.php';
+
 require_once '../../datenbank/GetData/Manga/mangas.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -18,6 +20,7 @@ if (!isset($_SESSION['user_id'])) {
 
 $userData = getUserData($userId);
 $countryData = getCountry($userId);
+$allCountries = getAllCountries();
 
 
 ?>
@@ -31,6 +34,7 @@ $countryData = getCountry($userId);
     <link rel="stylesheet" href="../../styles/profileStyle.css">
     <script src="../../nav.js" defer></script>
     <script src="../../scripts/favMangas.js" defer></script>
+    <script src="../../scripts/editProfile.js" defer></script>
 </head>
 <body>
 
@@ -38,6 +42,14 @@ $countryData = getCountry($userId);
       <div id="logo">
         <img src="../../Images/Logo.png" alt="MangaCourt Logo">
       </div>
+       <?php
+
+       if (isset($_SESSION['user_id'])) {
+        echo '<div id="signIn"><a href="../../datenbank/GetData/user/logoutUser.php"><p>Log Out</p></a></div>';
+      } else {
+        echo '<div id="signIn"><a href="../../pages/login/login.php"><p>Sign in</p></a></div>';
+      }
+      ?>
 </div>
   
 
@@ -46,11 +58,15 @@ $countryData = getCountry($userId);
   <main>
     <div id="profile-header">
         <div id="profile-picture">
-            <img src="../../Images/dummy.png" alt="dummy">
+            <img src="<?php 
+                $profileImage = (!empty($userData['imageName'])) ? '../../Images/uploads/' . htmlspecialchars($userData['imageName']) . ".jpg" : '../../Images/dummy.png';
+                echo $profileImage;
+            ?>" alt="<?php echo htmlspecialchars($userData['username'] ?? 'User'); ?>">
         </div>
         <div id="profile-info">
-            <h1><?php echo htmlspecialchars($userData['username']); ?></h1>
-            <p><?php echo htmlspecialchars($countryData['countryname']); ?></p>
+            <h1><?php echo htmlspecialchars($userData['username'] ?? 'User'); ?></h1>
+            <p><?php echo htmlspecialchars($countryData['countryname'] ?? 'Unknown Country'); ?></p>
+            <button id="editProfileBtn">Edit Profile</button>
         </div>
     </div>
 
@@ -78,7 +94,7 @@ $countryData = getCountry($userId);
     </a>
  
     <!-- Top -->
-    <a href="#" class="nav-item" data-id="top">
+    <a href="../../pages/trends/trends.php" class="nav-item" data-id="top">
       <div class="nav-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -110,6 +126,50 @@ $countryData = getCountry($userId);
     </a>
  
   </nav>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Edit Profile</h2>
+            <button class="close-modal">&times;</button>
+        </div>
+        <form id="editProfileForm" class="modal-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($userData['username'] ?? ''); ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($userData['email'] ?? ''); ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">File</label>
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+            </div>
+            <div class="form-group">
+                <label for="country_id">Country</label>
+                <select id="country_id" name="country_id" required>
+                    <option value="">Select a country</option>
+                    <?php 
+                        $currentCountryId = $userData['country_country_id'] ?? '';
+                        foreach ($allCountries as $country) {
+                            $selected = ($country['country_id'] == $currentCountryId) ? 'selected' : '';
+                            echo '<option value="' . intval($country['country_id']) . '" ' . $selected . '>' . htmlspecialchars($country['countryname']) . '</option>';
+                        }
+                    ?>
+                </select>
+            </div>
+            
+            <div class="modal-buttons">
+                <button type="submit" class="btn-save">Save Changes</button>
+                <button type="button" class="btn-cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
