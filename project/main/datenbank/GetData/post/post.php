@@ -69,4 +69,17 @@ function updatePost($postId, $ratingValue, $salutation) {
     return mysqli_query($conn, $sql);
 }
 
+function getPostsInfoByUserId($userId) {
+    global $conn;
+    $sql = "SELECT create_at as post_date ,created_by,chapter_chapter_id as chapter_id, manga_manga_id as manga_id FROM post JOIN users ON post.created_by = users.user_id WHERE users.user_id = " . intval($userId);
+    $result = mysqli_query($conn, $sql);
+
+    if (!$result) {
+        error_log("Query failed: " . mysqli_error($conn));
+        return [];
+    }
+
+    return mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
+
 ?>

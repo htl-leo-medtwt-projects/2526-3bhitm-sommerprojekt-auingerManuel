@@ -1,0 +1,44 @@
+
+#loginInform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+    background-color: var(--color-bg-box);
+    padding: var(--space-8);
+    border-radius: var(--radius-md);
+}
+
+#loginInform p {
+    font-size: 18px;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+}
+
+#loginInform a {
+    text-decoration: none;
+   
+    font-size: 18px;
+    transition: var(--transition);    
+}
+
+#loginInform a:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-text-secondary);
+
+}
+
+#loginInform a button {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    margin: 0;
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+}
+
+#loginInform a button:hover {
+    background-color: var(--color-primary-hover);
+    color: var(--color-text-secondary);
+    scale: 1.05;
+}

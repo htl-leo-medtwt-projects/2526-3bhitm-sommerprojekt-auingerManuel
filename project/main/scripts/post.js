@@ -2,7 +2,11 @@
 function openCommentModal(postId) {
   const modal = document.getElementById('commentModal');
   const postIdInput = document.getElementById('comment-post-id');
-  postIdInput.value = postId;
+  
+  if (postIdInput) {          // ← only set if the element exists
+    postIdInput.value = postId;
+  }
+  
   modal.style.display = 'block';
   loadCommentsModal(postId);
 }

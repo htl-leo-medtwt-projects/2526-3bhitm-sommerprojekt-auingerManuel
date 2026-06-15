@@ -1,18 +1,48 @@
 <?php
-
 session_start();
-
-require_once "../../datenbank/mysqlConnection.php";
-
-
-$defaultLimit = 10; 
-
-$limit = $defaultLimit;
+require_once '../../datenbank/mysqlConnection.php';
+require_once '../../datenbank/GetData/user/getUserData.php';
+require_once '../../datenbank/GetData/post/post.php';
+require_once '../../datenbank/GetData/manga/mangas.php';
 
 
+if (!isset($_SESSION['user_id'])) {
+    
+    header("Location: ../login/loginInform.php");
+    exit();
+} else {
+    $userId = $_SESSION['user_id'];
+}
+
+
+
+$userData = getUserData($_SESSION['user_id']);
+
+
+
+$posts = getPostsInfoByUserId($userData['user_id']);
+
+
+
+
+printPost($posts);
+
+function printPost($posts) {
+   $print = '<h2>My Posts</h2>';
+   $print .= '<div class="posts-container">';
+   foreach ($posts as $post) {
+       $print .= "<a href='../../pages/post/post.php?manga_id=" . $post['manga_id'] . "&chapter_id=" . $post['chapter_id'] . "'>";
+       $print .= "<div class='post-item'>";
+       $print .= "<p> Post Date: " . $post['post_date'] . " ";
+       $print .= "Manga: " . getNamebyId($post['manga_id']) .  "</p>";
+       $print .= "</div>";
+       $print .= "</a>";
+   }
+    $print .= '</div>';
+   echo $print;
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,19 +50,15 @@ $limit = $defaultLimit;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangaCourt</title>
     <link rel="stylesheet" href="../../mainstyle.css">
-    <link rel="stylesheet" href="../../styles/trendsStyle.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../../nav.js" defer></script>
-    <script src="../../scripts/trends.js" defer></script>
+    <link rel="stylesheet" href="../../styles/interactionStyle.css">
 </head>
 <body>
 
+
 <div id="header">
       <div id="logo">
-        <img src="../../Images/Logo.png" alt="MangaCourt Logo">
-      </div>
+        <img src="../../Images/Logo.png" alt="MangaCourt Logo"> 
+</div>
 
       <?php
 
@@ -44,36 +70,10 @@ $limit = $defaultLimit;
       ?>
       </div>
 
-<h2>Top Mangas</h2>
-
-    <div id="trends-input">
-  <!-- Methodenauswahl -->
-  <div class="btn-group">
-    <button id="btn-votes" class="active" onclick="selectMethod('votes')">⭐ Top by Votes</button>
-    <button id="btn-comments" onclick="selectMethod('comments')">💬 Top by Comments</button>
-  </div>
-
-  <div id="limit-container" style="margin-top: 1rem;">
-  <!-- Slider (ki) -->
-  <label>Anzahl: <strong id="limit-badge">10</strong></label>
-  <input type="range" id="limit-slider" min="0" max="2" step="1" value="2"
-    oninput="updateLimit(this.value)" style="width:100%; margin: 8px 0;" />
-  <div class="slider-labels">
-    <span>3</span><span>5</span><span>10</span>
-  </div>
-  </div>
-
-  <br>
-  <button onclick="loadData()" style="flex:none; width:100%; padding:12px; margin-top:1rem;">
-    Laden
-  </button>
-</div>
-  <div id="results"></div>
-
-  <nav class="nav-bar" id="navBar">
+<nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
-    <a href="../../pages/Interaction/interaction.php" class="nav-item" data-id="myinteraction">
+    <a href="./Interaction/interaction.php" class="nav-item active" data-id="myinteraction">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -84,7 +84,7 @@ $limit = $defaultLimit;
     </a>
  
     <!-- Top -->
-    <a href="./trends.php" class="nav-item active" data-id="top">
+    <a href="../../pages/trends/trends.php" class="nav-item" data-id="top">
       <div class="nav-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">
@@ -116,8 +116,6 @@ $limit = $defaultLimit;
     </a>
  
   </nav>
-
-
     
 </body>
 </html>

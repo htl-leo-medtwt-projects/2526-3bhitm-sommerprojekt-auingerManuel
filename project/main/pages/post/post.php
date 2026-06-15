@@ -11,6 +11,7 @@ require_once '../../datenbank/GetData/Comments/comments.php';
 
 
 
+
 $manga = getManga($_GET['manga_id']);
 $chapter = getChapterByMangaAndChapterId($_GET['manga_id'], $_GET['chapter_id']);
 $posts = getPost($_GET['manga_id'], $_GET['chapter_id']);
@@ -21,11 +22,11 @@ $userPost = isset($_SESSION['user_id']) && $alreadyPosted ?
 getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null;
 
 
+$userData = "";
 
-
-
+if (isset($_SESSION['user_id'])) {
 $userData = getUserData($_SESSION['user_id']);
-
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,9 +52,9 @@ $userData = getUserData($_SESSION['user_id']);
       <?php
 
        if (isset($_SESSION['user_id'])) {
-        echo '<div id="signIn"><a href="./datenbank/GetData/user/logoutUser.php"><p>Log Out</p></a></div>';
+        echo '<div id="signIn"><a href="../../datenbank/GetData/user/logoutUser.php"><p>Log Out</p></a></div>';
       } else {
-        echo '<div id="signIn"><a href="./pages/login/login.php"><p>Sign in</p></a></div>';
+        echo '<div id="signIn"><a href="../login/login.php"><p>Sign in</p></a></div>';
       }
       ?>
      </div>
@@ -148,7 +149,10 @@ $userData = getUserData($_SESSION['user_id']);
                   <?php 
                     $commentCount = getCommentCount($post['post_id']);
                   ?>
+
+          
                   <button class="comment-btn" onclick="openCommentModal(<?php echo $post['post_id']; ?>)">
+
                     💬 Comments (<?php echo $commentCount; ?>)
                   </button>
                 </div>
@@ -183,7 +187,7 @@ $userData = getUserData($_SESSION['user_id']);
    <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
-    <a href="#" class="nav-item" data-id="myinteraction">
+    <a href="../Interaction/interaction.php" class="nav-item" data-id="myinteraction">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">

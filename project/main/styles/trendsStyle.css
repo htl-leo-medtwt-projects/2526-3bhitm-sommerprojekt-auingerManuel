@@ -1,17 +1,29 @@
-
 #trends-input {
-    position: fixed;
-    top: 140px;
-    right: var(--space-4);
-    z-index: 100;
+    position: static;
+    z-index: unset;
     background: var(--color-bg-box);
     padding: var(--space-3);
     border-radius: var(--radius-md);
     border: 1px solid var(--color-bg-alt);
-    width: auto;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+#trends-input .col-divider {
+    width: 1px;
+    background: var(--color-bg-alt);
+    align-self: stretch;
+}
+
+#trends-input > div {
     display: flex;
     flex-direction: column;
-    gap: var(--space-3);
+    gap: var(--space-2);
 }
 
 
@@ -24,8 +36,8 @@ label {
 
 .btn-group {
     display: flex;
+    flex-direction: column;
     gap: var(--space-2);
-    flex-wrap: wrap;
 }
 
 .btn-group button {
@@ -39,6 +51,7 @@ label {
     font-family: var(--font-body);
     transition: all var(--transition);
     white-space: nowrap;
+    text-align: left;
 }
 
 .btn-group button:hover {
@@ -74,7 +87,6 @@ label strong {
     outline: none;
     vertical-align: middle;
 }
-
 
 #limit-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -119,27 +131,36 @@ label strong {
 }
 
 .slider-labels {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
     width: 150px;
+    height: 16px;
     font-size: var(--text-xs);
     color: var(--color-text-muted);
-    gap: var(--space-1);
     margin: 0;
 }
 
+.slider-labels span {
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+/* positions match the 3 snap points (min=0, mid=1, max=2) on a 150px track */
+.slider-labels span:nth-child(1) { left: 0%;   transform: translateX(0); }
+.slider-labels span:nth-child(2) { left: 50%;  transform: translateX(-50%); }
+.slider-labels span:nth-child(3) { left: 100%; transform: translateX(-100%); }
+
 button[onclick="loadData()"] {
     width: auto !important;
-    padding: var(--space-2) var(--space-3) !important;
+    padding: var(--space-3) var(--space-6) !important;
     background: var(--color-primary) !important;
     color: var(--color-text-primary) !important;
     border: none !important;
     border-radius: var(--radius-md) !important;
     cursor: pointer;
-    font-size: var(--text-xs) !important;
+    font-size: var(--text-md) !important;
     font-family: var(--font-body) !important;
     font-weight: bold;
-    margin: 0 !important;
+    margin: auto 0 0 0 !important;
     transition: all var(--transition);
 }
 
@@ -357,41 +378,104 @@ button[onclick="loadData()"]:hover {
 }
 
 @media (max-width: 480px) {
+    /* Scrollable result box */
     .trends-container {
+        max-height: 60vh;
+        overflow-y: auto;
+        overflow-x: hidden;
         padding: var(--space-2);
+        border: 1px solid var(--color-bg-alt);
+        border-radius: var(--radius-md);
+        padding-bottom: 80px;
     }
 
+    /* Hero card: thumbnail left, info right */
     .trends-numberOne {
-        margin-bottom: var(--space-6);
+        margin-bottom: var(--space-3);
+    }
+
+    .trends-numberOne-inner {
+        flex-direction: row;
+        gap: var(--space-3);
+        padding: var(--space-3);
+        align-items: flex-start;
+    }
+
+    .trends-numberOne-img {
+        width: 80px;
+        min-width: 80px;
+        max-width: 80px;
+        height: 110px;
     }
 
     .trends-numberOne-info h2 {
-        font-size: var(--h3);
+        font-size: var(--text-md);
+        margin-bottom: var(--space-1);
     }
 
     .trends-mangaka {
-        font-size: var(--text-sm);
+        font-size: var(--text-xs);
+        margin-bottom: var(--space-1);
     }
 
     .trends-stat {
-        font-size: var(--text-sm);
+        font-size: var(--text-xs);
+        margin: var(--space-1) 0;
     }
 
+    /* Grid cards: 1 column, horizontal row layout */
     .trends-grid {
         grid-template-columns: 1fr;
-        gap: var(--space-3);
+        gap: var(--space-2);
+    }
+
+    .trends-card {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
     }
 
     .trends-card-img {
-        height: 250px;
+        width: 70px;
+        min-width: 70px;
+        height: 95px;
+        object-fit: cover;
     }
 
-   
+    .trends-card-content {
+        padding: var(--space-2) var(--space-3);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .trends-card-content h3 {
+        font-size: var(--text-sm);
+        margin-bottom: var(--space-1);
+    }
+
+    .trends-card-mangaka {
+        font-size: var(--text-xs);
+        margin-bottom: var(--space-1);
+    }
+
+    .trends-card-stat {
+        font-size: var(--text-xs);
+        margin: 0;
+    }
+
+    /* Control bar stays as row */
     #trends-input {
-        top: 140px;
-        right: var(--space-3);
+        flex-direction: row;
         padding: var(--space-2);
         gap: var(--space-2);
+    }
+
+    #trends-input .col-divider {
+        width: 1px;
+        height: auto;
+        align-self: stretch;
     }
 
     .btn-group {
@@ -405,16 +489,20 @@ button[onclick="loadData()"]:hover {
     }
 
     #limit-slider {
-        width: 120px;
+        width: 80px;
     }
 
     .slider-labels {
-        width: 120px;
-        font-size: 10px;
+        width: 100%;
+        height: 16px;
     }
 
+    .slider-labels span:nth-child(1) { left: 0%;   transform: translateX(0); }
+    .slider-labels span:nth-child(2) { left: 50%;  transform: translateX(-50%); }
+    .slider-labels span:nth-child(3) { left: 100%; transform: translateX(-100%); }
+
     button[onclick="loadData()"] {
-        font-size: 11px !important;
-        padding: var(--space-1) var(--space-2) !important;
+        font-size: var(--text-xs) !important;
+        padding: var(--space-2) var(--space-3) !important;
     }
 }

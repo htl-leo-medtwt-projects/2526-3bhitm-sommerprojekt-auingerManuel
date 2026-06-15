@@ -54,7 +54,7 @@ getMangas();
    <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
-    <a href="#" class="nav-item" data-id="myinteraction">
+    <a href="./pages/Interaction/interaction.php" class="nav-item" data-id="myinteraction">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">

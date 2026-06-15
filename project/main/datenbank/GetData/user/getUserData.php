@@ -25,5 +25,15 @@ function getUserIDbyName($username) {
     return null; 
 }
 
+function getUsernameByID($userId) {
+    global $conn;
+    $sql = "SELECT username FROM users WHERE user_id = " . intval($userId);
+    $result = mysqli_query($conn, $sql);
+    if ($row = mysqli_fetch_assoc($result)) {
+        return $row['username'];
+    }
+    return null; 
+}
+
 
 ?>

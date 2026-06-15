@@ -12,7 +12,8 @@ require_once '../../datenbank/GetData/country/getAllCountries.php';
 require_once '../../datenbank/GetData/Manga/mangas.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../index.php");
+    
+    header("Location: ../login/loginInform.php");
     exit();
 } else {
     $userId = $_SESSION['user_id'];
@@ -83,7 +84,7 @@ $allCountries = getAllCountries();
 <nav class="nav-bar" id="navBar">
  
     <!-- MyInteraction -->
-    <a href="#" class="nav-item" data-id="myinteraction">
+    <a href="../../pages/Interaction/interaction.php" class="nav-item" data-id="myinteraction">
       <div class="nav-icon"> 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
              stroke-linecap="round" stroke-linejoin="round">

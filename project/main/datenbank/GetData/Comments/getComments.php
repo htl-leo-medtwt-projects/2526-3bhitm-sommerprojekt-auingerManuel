@@ -1,7 +1,10 @@
 <?php
 session_start();
+        
 require_once '../../mysqlConnection.php';
 require_once './comments.php';
+
+date_default_timezone_set('Europe/Vienna');
 
 if (isset($_GET['post_id'])) {
     $postId = intval($_GET['post_id']);
@@ -12,6 +15,10 @@ if (isset($_GET['post_id'])) {
         foreach ($comments as $comment) {
             $profileImage = (!empty($comment['imageName'])) ? '../../Images/uploads/' . htmlspecialchars($comment['imageName']) . ".jpg" : '../../Images/dummy.png';
             $isOwnComment = $currentUserId && $comment['user_user_id'] == $currentUserId;
+            
+        
+            $date = new DateTime($comment['created_at']);
+            $createdAt = date('Y-m-d H:i:s');
             ?>
             <div class="comment-item <?php echo $isOwnComment ? 'own-comment' : ''; ?>">
                 <img src="<?php echo $profileImage; ?>" alt="<?php echo htmlspecialchars($comment['username']); ?>" class="comment-avatar">
@@ -23,7 +30,7 @@ if (isset($_GET['post_id'])) {
                         <?php endif; ?>
                     </div>
                     <p class="comment-text"><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
-                    <p class="comment-date"><?php echo date('d.m.Y H:i', strtotime($comment['created_at'])); ?></p>
+                    <p class="comment-date"><?php echo $createdAt; ?></p>
                 </div>
             </div>
             <?php
@@ -33,4 +40,3 @@ if (isset($_GET['post_id'])) {
     }
 }
 ?>
-

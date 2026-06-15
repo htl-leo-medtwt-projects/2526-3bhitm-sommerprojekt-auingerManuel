@@ -5,35 +5,34 @@
 
 function addComment($postId, $userId, $content) {
     global $conn;
-    $postId = intval($postId);
-    $userId = intval($userId);
-    $content = mysqli_real_escape_string($conn, $content);
+    
+   
+    $createdAt = date('Y-m-d H:i:s');
     
     $sql = "INSERT INTO comments (content, created_at, post_post_id, user_user_id) 
-            VALUES ('$content', NOW(), $postId, $userId)";
+            VALUES (?, ?, ?, ?)";
     
-    return mysqli_query($conn, $sql);
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssii", $content, $createdAt, $postId, $userId);
+    
+    return $stmt->execute();
 }
 
 function getCommentsByPost($postId) {
     global $conn;
-    $postId = intval($postId);
     
-    $sql = "SELECT comments.comment_id, comments.content, comments.created_at, comments.user_user_id,
-                   users.username, users.imageName
+    $sql = "SELECT comments.comment_id, comments.content, comments.created_at, 
+                   comments.user_user_id, users.username, users.imageName
             FROM comments
             JOIN users ON comments.user_user_id = users.user_id
-            WHERE comments.post_post_id = $postId
+            WHERE comments.post_post_id = ?
             ORDER BY comments.created_at DESC";
     
-    $result = mysqli_query($conn, $sql);
-    $comments = [];
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $postId);
+    $stmt->execute();
     
-    while ($row = mysqli_fetch_assoc($result)) {
-        $comments[] = $row;
-    }
-    
-    return $comments;
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 }
 
 function deleteComment($commentId, $userId) {
