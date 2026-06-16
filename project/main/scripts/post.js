@@ -1,9 +1,9 @@
-// Commentar pop up handling
+// Kommentar pop up 
 function openCommentModal(postId) {
   const modal = document.getElementById('commentModal');
   const postIdInput = document.getElementById('comment-post-id');
   
-  if (postIdInput) {          // ← only set if the element exists
+  if (postIdInput) {          // ← nur setzen, wenn das Input-Feld existiert
     postIdInput.value = postId;
   }
   

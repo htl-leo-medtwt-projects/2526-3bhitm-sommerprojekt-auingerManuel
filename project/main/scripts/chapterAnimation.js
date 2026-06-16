@@ -32,3 +32,5 @@ document.querySelectorAll('.chapter-item').forEach((item) => {
         });
     });
 });
+
+// Hilfe durch KI

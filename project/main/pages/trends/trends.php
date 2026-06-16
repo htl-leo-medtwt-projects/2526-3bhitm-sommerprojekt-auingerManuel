@@ -4,12 +4,8 @@ session_start();
 
 require_once "../../datenbank/mysqlConnection.php";
 
-
 $defaultLimit = 10; 
-
 $limit = $defaultLimit;
-
-
 
 ?>
 

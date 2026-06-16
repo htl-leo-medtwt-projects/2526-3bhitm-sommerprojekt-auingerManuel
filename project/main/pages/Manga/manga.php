@@ -6,7 +6,7 @@ require_once '../../datenbank/GetData/manga/mangas.php';
 require_once '../../datenbank/GetData/chapter/chapter.php';
 require_once '../../datenbank/GetData/rating/rating.php';
 
-// Accept both 'id' and 'manga_id' parameters for compatibility
+// Aus Sicherheitsgründen die Manga-ID prüfen
 $manga_id = $_GET['id'] ?? $_GET['manga_id'] ?? null;
 
 if (!$manga_id) {

@@ -2,13 +2,9 @@
 session_start();
 
 require_once '../../datenbank/mysqlConnection.php';
-
 require_once '../../datenbank/GetData/Profile/profile.php';
-
 require_once '../../datenbank/GetData/country/country.php';
-
 require_once '../../datenbank/GetData/country/getAllCountries.php';
-
 require_once '../../datenbank/GetData/Manga/mangas.php';
 
 if (!isset($_SESSION['user_id'])) {
@@ -53,9 +49,6 @@ $allCountries = getAllCountries();
       ?>
 </div>
   
-
-
-
   <main>
     <div id="profile-header">
         <div id="profile-picture">
