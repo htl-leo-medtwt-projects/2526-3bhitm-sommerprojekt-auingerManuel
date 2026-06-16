@@ -1,16 +1,14 @@
 <?php
 session_start();
 
+// Span mithilfe Ki gelöst
+
 require_once '../../datenbank/mysqlConnection.php';
 require_once '../../datenbank/GetData/manga/mangas.php';
 require_once '../../datenbank/GetData/chapter/chapter.php';
 require_once '../../datenbank/GetData/post/post.php';
 require_once '../../datenbank/GetData/user/getUserData.php';
 require_once '../../datenbank/GetData/Comments/comments.php';
-
-
-
-
 
 $manga = getManga($_GET['manga_id']);
 $chapter = getChapterByMangaAndChapterId($_GET['manga_id'], $_GET['chapter_id']);
@@ -20,7 +18,6 @@ $alreadyPosted = isset($_SESSION['user_id']) ?
 checkAlreadyPosted($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : false;
 $userPost = isset($_SESSION['user_id']) && $alreadyPosted ? 
 getUserPost($_GET['manga_id'], $_GET['chapter_id'], $_SESSION['user_id']) : null;
-
 
 $userData = "";
 

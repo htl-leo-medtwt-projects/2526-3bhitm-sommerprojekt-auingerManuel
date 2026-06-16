@@ -34,7 +34,7 @@ function searchMangas(searchTerm) {
     .catch(error => console.error('Error:', error));
 }
 
-// Event Listener für den Search Button
+// Event Listener für die Suche
 document.addEventListener('DOMContentLoaded', function() {
   const searchButton = document.getElementById('searchButton');
   const searchInput = document.getElementById('searchInput');
